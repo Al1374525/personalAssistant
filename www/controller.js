@@ -1,15 +1,17 @@
 $(document).ready(function () {
 
     // Display Speak Message
-    eel.expose(DisplayMessage)
+    eel.expose(DisplayMessage);
+    
     function DisplayMessage(message) {
 
-        $("#siri-message ").text(message); //Update the text content
-        $('.siri-message').textillate('start'); //Animate if needed
+        $("#siri-message").text(message);
+        $('.siri-message').textillate('start');
 
     }
+    
 
-    //eel.expose(DisplayMessage);
+    
 
     //Display Hood
     eel.expose(ShowHood)

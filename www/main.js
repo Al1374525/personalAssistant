@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     
-    
+    eel.init()()
 
     $('.text').textillate({
         loop: true,
@@ -23,7 +23,7 @@ $(document).ready(function () {
         style: "ios9",
         amplitude: "1",
         speed: "0.30",
-        autostart: true,
+        autostart: true
       });
 
       //Siri message animation configuration
