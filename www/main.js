@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     
-    eel.init()()
+    //eel.init()()
 
     $('.text').textillate({
         loop: true,
@@ -48,7 +48,7 @@ $(document).ready(function () {
         //eel.playAssistantSound()
         $("#Oval").attr("hidden", true);
         $("#SiriWave").attr("hidden", false);
-        eel.takeCommand()()
+        eel.allCommands()()
         
     });
 

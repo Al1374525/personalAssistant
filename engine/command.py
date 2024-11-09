@@ -19,7 +19,7 @@ def speak(text):
     voices = engine.getProperty('voices')
     engine.setProperty('voice', voices[0].id)
     engine.setProperty('rate', 174) 
-    print(voices)
+    #print(voices)
     eel.DisplayMessage(text)
     engine.say(text)
     engine.runAndWait()
@@ -43,12 +43,25 @@ def takeCommand():
         query = r.recognize_google(audio, language='en-in')
         print(f"user said: {query}")
         eel.DisplayMessage(query)
-        speak(query)
+        #speak(query)
         eel.ShowHood()
     except Exception as e:
         return ""
     return query.lower()
 
+@eel.expose
+def allCommands():
+    
+    query = takeCommand()
+    print(query)
+    
+    if "open" in query:
+        
+        from engine.features import openCommand #change this 
+        openCommand(query)
+    else:
+        print("not run")
+    
 
 #text = takeCommand()
     
