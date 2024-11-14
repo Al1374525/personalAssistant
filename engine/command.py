@@ -51,11 +51,17 @@ def takeCommand():
     return query.lower()
 
 @eel.expose
-def allCommands():
-    try:
-        
+def allCommands(message=1):
+    if message == 1:
         query = takeCommand()
         print(query)
+    else:
+        query = message
+    
+    try:
+        
+        # query = takeCommand()
+        # print(query)
     
         if "open" in query:
         
