@@ -15,6 +15,7 @@ eel.init('www')
 
 def speak(text):
     
+    text = str(text)
     engine = pyttsx3.init('sapi5')
     voices = engine.getProperty('voices')
     engine.setProperty('voice', voices[0].id)
@@ -55,6 +56,9 @@ def takeCommand():
 def allCommands(message=1):
     if message == 1:
         query = takeCommand()
+        if not query:  # Check if query is empty or invalid
+            eel.DisplayMessage("I didn't catch that. Please try again.")  # Notify the user
+            return  # Stop further execution
         print(query)
         eel.senderText(query)
     else:
@@ -70,13 +74,15 @@ def allCommands(message=1):
         
             from engine.features import openCommand #change this 
             openCommand(query)
-        elif "on youtube":
+        elif "on youtube" in query:
             from engine.features import PlayYoutube
             PlayYoutube(query)
         
     
         else:
-         print("not run")
+             from engine.features import chatBot
+             chatBot(query)
+         
     except:
         print("error")
     

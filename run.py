@@ -16,6 +16,10 @@ def listenHotword():
         hotword()
 
 
+#debug
+import os
+print(os.path.abspath("engine\\cookies.json"))
+
   # Start both processes
 if __name__ == '__main__':
         p1 = multiprocessing.Process(target=startDelta)

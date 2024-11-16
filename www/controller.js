@@ -7,6 +7,14 @@ $(document).ready(function () {
 
         $("#siri-message").text(message);
         $('.siri-message').textillate('start');
+         // Add logic to re-enable input or retry after error
+    if (message === "I didn't catch that. Please try again.") {
+        console.log("Enabling retry options...");
+        // Example: Automatically listen again after a short delay
+        setTimeout(() => {
+            eel.allCommands(1); // Retry command listening
+        }, 3000);
+    }
 
     }
     

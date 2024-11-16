@@ -2,6 +2,7 @@ import re
 import sqlite3
 import struct
 import time
+from hugchat import hugchat
 from playsound import playsound
 import eel
 import pvporcupine
@@ -77,13 +78,8 @@ def openCommand(query):
 
 def PlayYoutube(query):
     search_term = extract_yt_term(query)
-    if search_term is not None:
-         speak("Playing "+ search_term +" on YouTube")
-         kit.playonyt(search_term)
-    else:
-        speak("Search term not found")
-    #speak("Playing "+search_term+" on YouTube")
-    #kit.playonyt(search_term)
+    speak("Playing "+search_term+" on YouTube")
+    kit.playonyt(search_term)
 
 
 def hotword():
@@ -123,3 +119,35 @@ def hotword():
             audio_stream.close()
         if paud is not None:
             paud.terminate()
+
+
+# #chat bot
+# def chatBot(query):
+#     user_input = query.lower()
+#     chatbot = hugchat.ChatBot(cookie_path="engine\\cookies.json")
+#     id = chatbot.new_conversation()
+#     chatbot.change_conversation(id)
+#     response =  chatbot.chat(user_input)
+#     print(response)
+#     speak(response)
+#     return response
+
+#debugging
+def chatBot(query):
+    user_input = query.lower()
+    cookie_path = "engine\\cookies.json"
+    if not os.path.exists(cookie_path):
+        print("Cookies file not found!")
+        return "Error: Cookies file not found."
+    
+    try:
+        chatbot = hugchat.ChatBot(cookie_path=cookie_path)
+        id = chatbot.new_conversation()
+        chatbot.change_conversation(id)
+        response = chatbot.chat(user_input)
+        print(response)
+        speak(response)
+        return response
+    except Exception as e:
+        print(f"ChatBot Error: {e}")
+        return "ChatBot encountered an error."
